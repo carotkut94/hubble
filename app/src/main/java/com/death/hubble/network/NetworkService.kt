@@ -1,5 +1,6 @@
 package com.death.hubble.network
 
+import com.death.hubble.data.ApiResponse
 import com.death.hubble.data.NasaImage
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -12,6 +13,6 @@ interface NetworkService{
      * list of nasa images
      */
     @GET(Endpoints.TRENDING_REPOS)
-    fun getNasaPhotos(@Header("token") token:String): Single<List<NasaImage>>
+    fun getNasaPhotos(@Header("token") token:String): Single<ApiResponse<List<NasaImage>>>
 
 }

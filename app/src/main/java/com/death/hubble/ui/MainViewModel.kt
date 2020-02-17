@@ -25,7 +25,7 @@ class MainViewModel(private val nasaImageRepository: NasaImageRepository,private
                 .observeOn(schedulerProvider.ui())
             .subscribe({
                 loading.postValue(false)
-                result.postValue(Resource.success(it))
+                result.postValue(Resource.success(it.data))
             },{
                 it.printStackTrace()
                 error.postValue(Resource.error("Something is not right"))
