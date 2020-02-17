@@ -14,6 +14,9 @@ object RetrofitClient{
 
     private const val NETWORK_CALL_TIMEOUT = 60
 
+    /**
+     * for creating the instance of the Retrofit apis exposed via NetworkService
+     */
     fun create(
         baseUrl: String
     ): NetworkService {

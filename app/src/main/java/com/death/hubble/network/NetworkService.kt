@@ -7,6 +7,10 @@ import retrofit2.http.Header
 
 interface NetworkService{
 
+    /**
+     * This interface method when overriden needs token as the arguments and returns the
+     * list of nasa images
+     */
     @GET(Endpoints.TRENDING_REPOS)
     fun getNasaPhotos(@Header("token") token:String): Single<List<NasaImage>>
 
