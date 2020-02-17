@@ -1,7 +1,8 @@
-package com.death.hubble
+package com.death.hubble.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.death.hubble.R
 
 class MainActivity : AppCompatActivity() {
 
