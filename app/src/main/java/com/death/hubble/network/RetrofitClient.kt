@@ -15,15 +15,12 @@ object RetrofitClient{
     private const val NETWORK_CALL_TIMEOUT = 60
 
     fun create(
-        baseUrl: String,
-        cacheDir: File,
-        cacheSize: Long
+        baseUrl: String
     ): NetworkService {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(
                 OkHttpClient.Builder()
-                    .cache(Cache(cacheDir, cacheSize))
                     .addInterceptor(HttpLoggingInterceptor().apply {
                         level = if(BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
                         else HttpLoggingInterceptor.Level.NONE

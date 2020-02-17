@@ -7,5 +7,5 @@ import io.reactivex.Single
 
 
 class NasaImageRepositoryImpl(private val networkService: NetworkService) : NasaImageRepository{
-    override fun getNasaPhotos(token: String): Single<List<NasaImage>> = networkService.getTrendingRepositories(token)
+    override fun getNasaPhotos(token: String): Single<List<NasaImage>> = networkService.getNasaPhotos(token)
 }

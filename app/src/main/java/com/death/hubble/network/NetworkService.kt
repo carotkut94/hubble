@@ -8,6 +8,6 @@ import retrofit2.http.Header
 interface NetworkService{
 
     @GET(Endpoints.TRENDING_REPOS)
-    fun getTrendingRepositories(@Header("token") token:String): Single<List<NasaImage>>
+    fun getNasaPhotos(@Header("token") token:String): Single<List<NasaImage>>
 
 }
