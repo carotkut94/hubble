@@ -21,8 +21,6 @@ class MainViewModel(private val nasaImageRepository: NasaImageRepository,private
         loading.postValue(true)
         compositeDisposable.add(
             nasaImageRepository.getNasaPhotos(BuildConfig.TOKEN)
-                .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.ui())
             .subscribe({
                 loading.postValue(false)
                 result.postValue(Resource.success(it.data))
