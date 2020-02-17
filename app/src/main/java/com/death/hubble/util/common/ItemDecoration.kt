@@ -25,7 +25,7 @@ class ItemDecoration(space: Int) :
         }
 
         outRect.top = halfSpace
-        outRect.bottom = 0
+        outRect.bottom = halfSpace
         outRect.left = halfSpace
         outRect.right = halfSpace
     }

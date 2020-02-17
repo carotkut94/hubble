@@ -11,16 +11,16 @@ import io.reactivex.disposables.CompositeDisposable
 
 class MainViewModel(private val nasaImageRepository: NasaImageRepository,private val compositeDisposable: CompositeDisposable, private val schedulerProvider: SchedulerProvider): ViewModel() {
 
-    val loading:MutableLiveData<Boolean> = MutableLiveData()
-
+    val loading:MutableLiveData<Boolean> = MutableLiveData(false)
     val result:MutableLiveData<Resource<List<NasaImage>>> = MutableLiveData()
-
     val error:MutableLiveData<Resource<String>> = MutableLiveData()
 
     fun loadPhotos(){
         loading.postValue(true)
         compositeDisposable.add(
             nasaImageRepository.getNasaPhotos(BuildConfig.TOKEN)
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.ui())
             .subscribe({
                 loading.postValue(false)
                 result.postValue(Resource.success(it.data))

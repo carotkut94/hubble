@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Hubble</string>
     <string name="nasa_image">nasa image</string>
+    <string name="crashed_in_desert">Crashed in desert!</string>
 </resources>

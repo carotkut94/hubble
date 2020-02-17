@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.android.ext.android.get
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<B:ViewDataBinding> : AppCompatActivity() {
 
     protected val compositeDisposable:CompositeDisposable = get()
 
@@ -17,11 +19,14 @@ abstract class BaseActivity : AppCompatActivity() {
     protected abstract val layoutRes: Int
 
 
+    lateinit var binding: B
+
     protected abstract fun setupView(savedInstanceState: Bundle?)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutRes)
+        binding = DataBindingUtil.setContentView(this, layoutRes)
         progressDialog = ProgressDialog(this)
         setupView(savedInstanceState)
     }
