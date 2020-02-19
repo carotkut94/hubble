@@ -12,6 +12,7 @@ import io.reactivex.disposables.CompositeDisposable
 class MainViewModel(private val nasaImageRepository: NasaImageRepository,private val compositeDisposable: CompositeDisposable, private val schedulerProvider: SchedulerProvider): ViewModel() {
 
     val loading:MutableLiveData<Boolean> = MutableLiveData(false)
+    val showError:MutableLiveData<Boolean> = MutableLiveData(false)
     val result:MutableLiveData<Resource<List<NasaImage>>> = MutableLiveData()
     val error:MutableLiveData<Resource<String>> = MutableLiveData()
 
@@ -26,14 +27,10 @@ class MainViewModel(private val nasaImageRepository: NasaImageRepository,private
                 result.postValue(Resource.success(it.data))
             },{
                 it.printStackTrace()
+                showError.postValue(true)
                 error.postValue(Resource.error("Something is not right"))
                 loading.postValue(false)
             }))
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.clear()
     }
 
 }

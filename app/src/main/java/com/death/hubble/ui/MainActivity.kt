@@ -25,7 +25,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val schedulerProvider: RxSchedulerProviderImpl = get()
 
     lateinit var mainViewModel: MainViewModel
-    val nasaImageList = ArrayList<NasaImage>()
+    private val nasaImageList = ArrayList<NasaImage>()
     lateinit var nasaImageAdapter: NasaImageAdapter
 
     override fun setupView(savedInstanceState: Bundle?) {
@@ -35,6 +35,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }).get(MainViewModel::class.java)
 
         binding.vm = mainViewModel
+
+
         nasaImageAdapter = NasaImageAdapter(nasaImageList)
 
         images.apply {
@@ -48,6 +50,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 nasaImageList.addAll(it.data)
                 nasaImageAdapter.notifyDataSetChanged()
             }
+        })
+
+        mainViewModel.error.observe(this, Observer {
+            showMessage(it.data!!)
         })
 
 

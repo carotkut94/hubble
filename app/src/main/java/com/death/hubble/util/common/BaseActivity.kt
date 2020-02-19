@@ -25,8 +25,8 @@ abstract class BaseActivity<B:ViewDataBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutRes)
         binding = DataBindingUtil.setContentView(this, layoutRes)
+        binding.lifecycleOwner = this
         progressDialog = ProgressDialog(this)
         setupView(savedInstanceState)
     }
