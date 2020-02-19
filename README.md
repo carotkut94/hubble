@@ -4,6 +4,18 @@ The Hubble Space Telescope is a space telescope that was launched into low Earth
 and most versatile, well known both as a vital research tool and as a public relations boon for astronomy.
 
 
+# Instructions
+
+In order to start with the project just clone the project and import the project in android studio
+as existing android studio project. No special instructions required.
+
+Android Studio Version : 3.5.3
+
+# API
+
+In order to get the NASA image data, I have hosted the provided json as node js express app,
+which is hosted on heroku, and available at https://github.com/carotkut94/nasa_api .
+
 
 # Screenshots
 
