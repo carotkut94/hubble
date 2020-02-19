@@ -2,6 +2,8 @@ package com.death.hubble.util.common
 
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity

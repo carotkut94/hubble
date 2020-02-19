@@ -4,15 +4,19 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.death.hubble.data.NasaImage
 import com.death.hubble.databinding.CardNasaPhotoBinding
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.card_nasa_photo.view.*
 
 
 class NasaImageAdapter(
-    private val nasaImages: List<NasaImage>
+    private val nasaImages: List<NasaImage>,
+    private val clickListener: ClickListener
 ) :
     RecyclerView.Adapter<NasaImageAdapter.NasaImageViewHolder>() {
 
@@ -30,8 +34,11 @@ class NasaImageAdapter(
         position: Int
     ) {
         holder.bindData(nasaImages[position])
-    }
 
+        holder.itemView.setOnClickListener {
+            clickListener.onClick(nasaImages[position], holder.itemView.poster, holder.itemView.headline, holder.itemView.poster.transitionName, holder.itemView.headline.transitionName)
+        }
+    }
 
     override fun getItemCount(): Int {
         return nasaImages.size
@@ -55,19 +62,15 @@ class NasaImageAdapter(
         }
     }
 
-    fun getComplimentColor(color: Int): Int {
-        val alpha = Color.alpha(color)
-        var red = Color.red(color)
-        var blue = Color.blue(color)
-        var green = Color.green(color)
-        red = red.inv() and 0xff
-        blue = blue.inv() and 0xff
-        green = green.inv() and 0xff
-        return Color.argb(alpha, red, green, blue)
-    }
 
     interface ClickListener {
-        fun onClick(view: View?, position: Int)
+        fun onClick(
+            nasaImage: NasaImage,
+            posterImageView: ImageView,
+            headline: TextView,
+            posterTransitionName: String,
+            headlineTransitionName: String
+        )
     }
 
 }
