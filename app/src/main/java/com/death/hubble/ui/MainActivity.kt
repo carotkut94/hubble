@@ -57,6 +57,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NasaImageAdapter.Click
 
         mainViewModel.result.observe(this, Observer {
             if (it.data!!.isNotEmpty()) {
+                nasaImageList.clear()
                 nasaImageList.addAll(it.data)
                 nasaImageAdapter.notifyDataSetChanged()
             }
