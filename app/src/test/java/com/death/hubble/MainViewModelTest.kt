@@ -59,7 +59,7 @@ class MainViewModelTest {
     /**
      * Test scheduler inorder to get hold of virtual concurrency with virtual passing time.
      */
-    @Mock
+
     private lateinit var testScheduler: TestScheduler
 
 
@@ -68,6 +68,8 @@ class MainViewModelTest {
     @Before
     fun setup(){
         MockitoAnnotations.initMocks(this)
+        // Here using a test scheduler
+        testScheduler = TestScheduler()
         schedulerProvider = TestSchedulerProvider(testScheduler)
         mainViewModel = MainViewModel(nasaImageRepository, CompositeDisposable(), schedulerProvider)
         mainViewModel.loading.observeForever(loadingObserver)
