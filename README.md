@@ -6,4 +6,13 @@ and most versatile, well known both as a vital research tool and as a public rel
 
 
 # Screenshots
-# Screenshots
+
+## Home Screen
+![image](https://github.com/carotkut94/hubble/blob/master/screenshots/1.homepage.jpg)
+
+## Detail Screen
+![image](https://github.com/carotkut94/hubble/blob/master/screenshots/2.detailpage.jpg)
+
+
+## Detail with info
+![image](https://github.com/carotkut94/hubble/blob/master/screenshots/3.info.jpg)
